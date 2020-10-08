@@ -1,7 +1,8 @@
 <div class="pageheader">
-  <h1>Shleters</h1>
+  <h1>Shelters</h1>
   <h3>Find your new best friend at one of these shelters</h3>
 </div>
+<a href="/shelters/new">New Shelter</a>
 <% @shelters.each do |shelter| %>
   <h2 style="text-align: center"><a href="/shelters/<% shelter.id %>"><%= shelter.name %></h2>
 <% end %>
