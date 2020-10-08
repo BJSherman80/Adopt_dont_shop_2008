@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+ .pageheader {
+  background-color: #708090;
+  color: #fff;
+  padding: 0.1em;
+  position: relative;
+  text-align: center;
+}
