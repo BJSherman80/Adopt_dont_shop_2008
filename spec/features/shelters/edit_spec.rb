@@ -11,11 +11,11 @@ RSpec.describe "shelters edit page", type: :feature do
                                 )
     visit "/shelters/#{shelter_1.id}"
     click_on "Update Shelter"
-    fill_in "shelter[name]", with: "Best Friends"
-    fill_in "shelter[address]", with: "4500 3rd Ave."
-    fill_in "shelter[city]", with: "Denver"
-    fill_in "shelter[state]", with: "CO"
-    fill_in "shelter[zip]", with: "84544"
+    fill_in :name, with: "Best Friends"
+    fill_in :address, with: "4500 3rd Ave."
+    fill_in :city, with: "Denver"
+    fill_in :state, with: "CO"
+    fill_in :zip, with: "84544"
     click_on "Submit"
     expect(page).to have_content("Best Friends")
 
