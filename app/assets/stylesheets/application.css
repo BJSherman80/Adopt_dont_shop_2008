@@ -21,3 +21,15 @@
   position: relative;
   text-align: center;
 }
+.column {
+ float: left;
+ width: 33.33%;
+ text-align: center;
+}
+
+.row:after {
+ content: "";
+ display: table;
+ clear: both;
+ background-color: white;
+}
