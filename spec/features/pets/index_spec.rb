@@ -12,7 +12,7 @@ RSpec.describe 'Pet index page', type: :feature do
     vernon = shelter_1.pets.create!(name: "Vernon", age: 18, sex: "male", image: "vernon.png" )
 
     visit "/pets"
-    save_and_open_page
+    
     expect(page).to have_content(vernon.name)
     #expect(page).to have_xpath(vernon.image)
     expect(page).to have_content(vernon.age)
