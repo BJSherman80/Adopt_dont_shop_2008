@@ -1,0 +1,14 @@
+<div class="pageheader">
+  <h1>Pets</h1>
+</div>
+<div class="row">
+<% @pets.each do |pet| %>
+  <div class="column">
+    <h4>Name: <a href="/pets/<%= pet.id %>"><%= pet.name %></a></h4>
+    <p>Located at: <a href="/shelters/<%= pet.shelter.id %>"><%= pet.shelter.name %></a></p>
+    <p> Age: <%= pet.age%></p>
+    <p>Sex: <%= pet.sex%></p>
+    <p>Image: <%=image_tag "#{pet.image}"%></p>
+  </div>
+<% end %>
+</div>
