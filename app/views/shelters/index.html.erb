@@ -4,5 +4,7 @@
 </div>
 <a href="/shelters/new">New Shelter</a>
 <% @shelters.each do |shelter| %>
-  <h2 style="text-align: center"><a href="/shelters/<% shelter.id %>"><%= shelter.name %></h2>
+  <h2 style="text-align: center; display: block"><a href="/shelters/<%= shelter.id %>"><%= shelter.name %></a></h2>
+  <h5 style="text-align: center; display: block"><a href="/shelters/<%= shelter.id %>/edit">Edit</a></h5>
+  <h5 style="text-align: center; display: block"><a href="/shelters/<%= shelter.id %>/delete">Delete</a></h5>
 <% end %>

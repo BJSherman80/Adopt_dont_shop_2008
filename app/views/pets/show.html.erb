@@ -1,5 +1,5 @@
 <div class="pageheader">
-  <h1><%= @pet.name %></h1>
+  <h1><a href="/pets/<%= pet.id %>"><%= pet.name %></a></h1>
 </div>
 <div class="show">
 <img src="<%= @pet.image %>" alt="<%= @pet.name %>" width="400">
@@ -8,5 +8,4 @@
 <p>Adoption Status: <%= @pet.status %></p>
 <h5><a href="/pets/<%= @pet.id %>/edit">Update Pet</a></h5>
 <h5><a href="/pets/<%= @pet.id %>/delete">Delete Pet</a></h5><br>
-
 </div>

@@ -10,6 +10,24 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class='clearfix'>
+      <div class="left-nav" >
+        <div class="page-links">
+        <%= link_to "Pets", controller: "pets" %>
+        <%= link_to "Shelters", controller: "shelters" %>
+      </div>
+      </div>
+    
+    </header>
+    <div class='content'>
+      <% flash.each do |type, msg| %>
+      <div class="alert alert-info", style='text-align:center;background-color:#FC9842;font-weight:bold;font-size:25px;background-image:linear-gradient(315deg, #FC9842 0%, #FE5F75 74%);'>
+        <%= msg %>
+      </div>
+      <% end %>
+      <div class='grid-background'>
+      <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
