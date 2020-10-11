@@ -1,5 +1,5 @@
 <div class="pageheader">
-  <h1><%= @shelter.name %></h1>
+  <h1><a href="/shelters/<% @shelter.id %>"><%= @shelter.name %></h1>
 </div>
 <p><%= @shelter.address %></p>
 <p><%= "#{@shelter.city}, #{@shelter.state}" %></p>

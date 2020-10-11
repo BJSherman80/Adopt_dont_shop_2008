@@ -4,11 +4,13 @@
 <div class="row">
 <% @pets.each do |pet| %>
   <div class="column">
+    <img src="<%= pet.image %>" alt="<%= pet.name %>" height="180">
     <h4>Name: <a href="/pets/<%= pet.id %>"><%= pet.name %></a></h4>
     <p>Located at: <a href="/shelters/<%= pet.shelter.id %>"><%= pet.shelter.name %></a></p>
     <p> Age: <%= pet.age%></p>
     <p>Sex: <%= pet.sex%></p>
-    <p>Image: <%=image_tag "#{pet.image}"%></p>
+    <h5><a href="/pets/<%= pet.id %>/edit">Edit</a></h5>
+    <h5><a href="/pets/<%= pet.id %>/delete">Delete</a></h5>
   </div>
 <% end %>
 </div>
