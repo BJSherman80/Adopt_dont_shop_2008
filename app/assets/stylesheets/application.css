@@ -33,3 +33,12 @@
  clear: both;
  background-color: white;
 }
+
+.show {
+  padding: 10px;
+  border: solid;
+  display: block;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: bold;
+}
