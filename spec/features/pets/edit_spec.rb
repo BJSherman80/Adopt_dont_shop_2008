@@ -18,7 +18,6 @@ RSpec.describe "pets edit page", type: :feature do
     fill_in :name, with: "Sammy"
     expect(page).to have_button("Submit")
     click_on "Submit"
-    save_and_open_page
     expect(page).to have_content("Sammy")
     expect(page).to have_content("male")#make sure the unchanged values still exist
   end
