@@ -48,6 +48,16 @@
   font-family: sans-serif;
   font-weight: bold;
 }
+
+.clearfix {
+  background-color: grey;
+  overflow: hidden;
+}
+
+.page-links {
+  color: white;
+  font-weight: bolder;
+}
 @import url('https://fonts.googleapis.com/css?family=Corben:700');
 
 h1 {
