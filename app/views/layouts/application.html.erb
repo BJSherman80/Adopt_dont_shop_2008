@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
   <head>
     <title>AdoptDontShop2008</title>
@@ -7,9 +8,13 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+
   </head>
 
+
+
   <body>
+
     <header class='clearfix'>
       <div class="left-nav" >
         <div class="page-links">
@@ -17,8 +22,8 @@
         <%= link_to "Shelters", controller: "shelters" %>
         </div>
       </div>
-
     </header>
+
     <div class='content'>
       <% flash.each do |type, msg| %>
       <div class="alert alert-info", style='text-align:center;background-color:#FC9842;font-weight:bold;font-size:25px;background-image:linear-gradient(315deg, #FC9842 0%, #FE5F75 74%);'>
