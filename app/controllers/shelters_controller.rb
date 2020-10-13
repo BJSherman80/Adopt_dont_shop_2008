@@ -9,6 +9,13 @@ class SheltersController < ApplicationController
   end
 
   def new
+  
+  end
+
+  def create
+    shelter = Shelter.new(shelter_params)
+    shelter.save
+    redirect_to '/shelters'
   end
 
   def edit
@@ -20,12 +27,6 @@ class SheltersController < ApplicationController
       shelter.update(shelter_params)
       shelter.save
     redirect_to "/shelters/#{shelter.id}"
-  end
-
-  def create
-    shelter = Shelter.new(shelter_params)
-    shelter.save
-    redirect_to '/shelters'
   end
 
   def destroy
