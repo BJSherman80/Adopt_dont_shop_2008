@@ -6,3 +6,10 @@
 <p><%= @user.state %></p>
 <p><%= @user.zip %></p>
 </div>
+<section class="show">
+  <% @user.reviews.each do |review| %>
+  <p>Title: <%= review.title %></p>
+  <p>Review out of 5: <%= review.rating %></p>
+  <p>Content: <%= review.content %></p>
+  <% end %>
+</section>
