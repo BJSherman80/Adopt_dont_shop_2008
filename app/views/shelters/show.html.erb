@@ -98,7 +98,8 @@
     <p>Rating: <%=review.rating%> </p>
     <p>Content: <%=review.content%> </p>
     <p>Username: <%=review.name_of_user%> </p>
-    <h5><a href="/shelters/<%= @shelter.id %>/<%="#{review.id}"%>/edit">Edit Review</a></h5>
+    <h5><a href="/shelters/<%= @shelter.id %>/review/<%="#{review.id}"%>/edit">Edit Review</a></h5>
+    <h5><a href="/shelters/<%= @shelter.id %>/review/<%="#{review.id}"%>/delete">Delete Review</a></h5>
   </section>
   <% end %>
 </div>
