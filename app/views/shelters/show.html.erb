@@ -92,10 +92,13 @@
 <div class="show">
   <h2>Reviews</h2>
   <% @shelter.reviews.each do |review| %>
-  <p><img src="<%= review.picture%>" alt="Picture from review" width="200"> </p>
-  <p>Title: <%=review.title%> </p>
-  <p>Rating: <%=review.rating%> </p>
-  <p>Content: <%=review.content%> </p>
-  <p>Username: <%=review.name_of_user%> </p>
+  <section id="review-<%= review.id %>">
+    <p><img src="<%= review.picture%>" alt="Picture from review" width="200"> </p>
+    <p>Title: <%=review.title%> </p>
+    <p>Rating: <%=review.rating%> </p>
+    <p>Content: <%=review.content%> </p>
+    <p>Username: <%=review.name_of_user%> </p>
+    <h5><a href="/shelters/<%= @shelter.id %>/<%="#{review.id}"%>/edit">Edit Review</a></h5>
+  </section>
   <% end %>
 </div>
