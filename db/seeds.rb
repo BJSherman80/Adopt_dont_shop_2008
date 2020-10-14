@@ -29,7 +29,13 @@ shelter_3 = Shelter.create( name: "Fuzzy Friends",
                           zip: 84444,
                           )
 
-
+user_1 = User.create( name: "Austin Powers",
+                          address: "4555 Shag Ave",
+                          city: "Denver",
+                          state: "CO",
+                          zip: 84444,
+                          )
+review = 
 shelter_1.pets.create!(name: "Lex Luther", age: 7, sex: "Male", image: "https://www.rd.com/wp-content/uploads/2018/12/50-Funny-Animal-Pictures-That-You-Need-In-Your-Life-25.jpg")
 shelter_1.pets.create!(name: "Bart", age: 4, sex: "Female", image: "https://i.pinimg.com/236x/19/80/34/198034b0276ec4242dc003c13d328e9e--big-eyes-lemurs.jpg")
 shelter_1.pets.create!(name: "Kevin", age: 3, sex: "Female", image: "https://www.insidedogsworld.com/wp-content/uploads/2017/06/German-Shepherd-Standard-Coat-GSC-1000x575-1-1-1-1-1000x575.jpg")
