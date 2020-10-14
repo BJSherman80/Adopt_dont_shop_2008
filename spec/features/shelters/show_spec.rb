@@ -77,7 +77,5 @@ RSpec.describe "shelters show page", type: :feature do
     expect(page).to have_content(1)
     expect(page).to have_content("This place sucks!")
     expect(page).to have_content("Calvin")
-
-
   end
 end
