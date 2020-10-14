@@ -86,5 +86,14 @@
 <h5><a href="/shelters/<%= @shelter.id %>/edit">Update Shelter</a></h5>
 <h5><a href="/shelters/<%= @shelter.id %>/delete">Delete Shelter</a></h5>
 <h5><a href="/shelters/<%= @shelter.id %>/pets">Pets</a></h5>
-
+</div>
+<div class="show">
+  <h2>Reviews</h2>
+  <% @shelter.reviews.each do |review| %>
+  <p><img src="<%= review.picture%>" alt="Picture from review" width="200"> </p>
+  <p>Title: <%=review.title%> </p>
+  <p>Rating: <%=review.rating%> </p>
+  <p>Content: <%=review.content%> </p>
+  <p>Username: <%=review.name_of_user%> </p>
+  <% end %>
 </div>
