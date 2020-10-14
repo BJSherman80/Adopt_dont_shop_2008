@@ -34,6 +34,7 @@ user_1 = User.create( name: "Austin Powers",
                           city: "Denver",
                           state: "CO",
                           zip: 84444,
+                          id: 1
                           )
 review = Review.create!(shelter_id: shelter_1.id, user_id: user_1.id, title: "Horrible service", rating: 1, content: "I saw a man slap a kitten", picture: "https://felineengineering.com/wp-content/uploads/2019/07/Adorable-sad-kitten-e1562788887775-974x1024.jpg", name_of_user: "Dr. Evil")
 
