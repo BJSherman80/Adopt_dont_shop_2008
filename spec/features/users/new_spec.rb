@@ -14,7 +14,7 @@ RSpec.describe "new user", type: :feature do
 
 
     click_button "Create User"
-    save_and_open_page
+  
     #question: should we have an expect current path test here?
     expect(page).to have_content("Brett")
     expect(page).to have_content("198 main ave")
