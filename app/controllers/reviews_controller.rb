@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = Review.find(params[:id])
+    @review = Review.find(params[:review_id])
   end
 
   def update
@@ -19,6 +19,11 @@ class ReviewsController < ApplicationController
       review.update(review_params)
       review.save
     redirect_to "/shelters/#{review.shelter_id}"
+  end
+
+  def destroy
+    Review.destroy(params[:review_id])
+    redirect_to "/shelters/#{(params[:id])}"
   end
 
 
