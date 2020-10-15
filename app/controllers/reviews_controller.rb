@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
       flash[:notice] = "Review successfully update!"
       redirect_to "/shelters/#{@review.shelter_id}"
     else
-      flash[:alert] = "Please fill out all fields to update review."
+      flash[:error] = "Please fill out all fields to update review."
       render :edit
     end
   end
