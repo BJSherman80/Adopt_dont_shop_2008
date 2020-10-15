@@ -3,23 +3,29 @@
 <%= form_tag "/shelters/#{@review.shelter_id}/review/#{@review.id}", method: :patch do %>
 
 <%= label_tag :title %>
-<%= text_field_tag :title, value="#{@review.title}" %><br>
+<%= text_field_tag :title, value="#{@review.title}", required: true %><br>
 
 <%= label_tag :rating %>
-<%= text_field_tag :rating, value="#{@review.rating}" %><br>
+<%= text_field_tag :rating, value="#{@review.rating}", required: true %><br>
 
 <%= label_tag :content  %>
-<%= text_field_tag :content, value="#{@review.content}" %><br>
+<%= text_field_tag :content, value="#{@review.content}", required: true %><br>
 
 <%= label_tag :picture %>
 <%= text_field_tag :picture, value="#{@review.picture}" %><br>
 
 <%= label_tag :username %>
-<%= text_field_tag :name_of_user, value="#{@review.name_of_user}" %><br>
+<%= text_field_tag :name_of_user, value="#{@review.name_of_user}", required: true %><br>
 
 <%= label_tag :user_id %>
-<%= text_field_tag :user_id, value="#{@review.user_id}" %><br>
+<%= text_field_tag :user_id, value="#{@review.user_id}", required: true %><br>
 
 <%= submit_tag "Update Review" %>
 <% end %>
 </div>
+
+<% flash.each do |type, msg| %>
+<div>
+  <%= msg %>
+</div>
+<% end %>
