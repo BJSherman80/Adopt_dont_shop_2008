@@ -15,10 +15,15 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    review = Review.find(params[:review_id])
-      review.update(review_params)
-      review.save
-    redirect_to "/shelters/#{review.shelter_id}"
+    @review = Review.find(params[:review_id])
+    @review.update(review_params)
+    if @review.save
+      flash[:notice] = "Review successfully update!"
+      redirect_to "/shelters/#{@review.shelter_id}"
+    else
+      flash[:alert] = "Please fill out all fields to update review."
+      render :edit
+    end
   end
 
   def destroy

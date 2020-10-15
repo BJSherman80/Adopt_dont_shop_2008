@@ -28,3 +28,5 @@ Rails.application.routes.draw do
   get '/users/:id', to: 'users#show'
 
 end
+
+# question: should we change the review delete path to delete
