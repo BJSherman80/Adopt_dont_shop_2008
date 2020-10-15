@@ -27,14 +27,14 @@ RSpec.describe "shelters reviews page", type: :feature do
     fill_in :title, with: "Boo"
     fill_in :rating, with: 1
     fill_in :content, with: "This place sucks!"
-    fill_in :name_of_user, with: "Calvin"
-    fill_in :user_id, with: "#{user_1.id}"
+    fill_in :name_of_user, with: "#{user_1.name}"
+
     click_on "Create Review"
 
     expect(current_path).to eq("/shelters/#{shelter_1.id}")
     expect(page).to have_content("Boo")
     expect(page).to have_content(1)
     expect(page).to have_content("This place sucks!")
-    expect(page).to have_content("Calvin")
+    expect(page).to have_content("#{user_1.name}")
   end
 end
