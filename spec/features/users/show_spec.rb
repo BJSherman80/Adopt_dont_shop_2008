@@ -12,11 +12,18 @@ RSpec.describe 'User show page', type: :feature do
                                 state: "CO",
                                 zip: 80222,
                                 )
-    @review = Review.create!(shelter_id: @shelter_1.id,
+    @review_1 = Review.create!(shelter_id: @shelter_1.id,
                             user_id: @user_1.id,
                             title: "Horrible service",
                             rating: 1,
                             content: "I saw a man slap a kitten",
+                            picture: "https://felineengineering.com/wp-content/uploads/2019/07/Adorable-sad-kitten-e1562788887775-974x1024.jpg",
+                            name_of_user: "Dr. Evil")
+     @review_2 = Review.create!(shelter_id: @shelter_1.id,
+                            user_id: @user_1.id,
+                            title: "Mediocre Service",
+                            rating: 5,
+                            content: "Had Hairless Cats",
                             picture: "https://felineengineering.com/wp-content/uploads/2019/07/Adorable-sad-kitten-e1562788887775-974x1024.jpg",
                             name_of_user: "Dr. Evil")
   end
@@ -30,8 +37,15 @@ RSpec.describe 'User show page', type: :feature do
   end
   it "can see all users reviews" do
     visit "/users/#{@user_1.id}"
-    expect(page).to have_content(@review.title)
-    expect(page).to have_content(@review.rating)
-    expect(page).to have_content(@review.content)
+    expect(page).to have_content(@review_1.title)
+    expect(page).to have_content(@review_1.rating)
+    expect(page).to have_content(@review_1.content)
+  end
+
+  it "can see the users average rating" do 
+    visit "/users/#{@user_1.id}"
+    within("#av_user_rating") do
+      expect(page).to have_content("Average: 3")
+    end
   end
 end
