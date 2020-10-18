@@ -23,7 +23,7 @@ RSpec.describe 'Application show page', type: :feature do
                                       status: "pending")
 
       visit "applications/#{application.id}"
-      save_and_open_page
+
       expect(page).to have_content(application.name_of_user)
       expect(page).to have_content(application.address)
       expect(page).to have_content(application.description)

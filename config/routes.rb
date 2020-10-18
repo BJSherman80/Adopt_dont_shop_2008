@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   post '/users', to: 'users#create'
   get '/users/:id', to: 'users#show'
   #applications
+  get '/applications/user_validation', to: 'applications#user_validation'
+  post '/applications', to: 'applications#create'
   get '/applications/:id', to: 'applications#show'
 end
 
