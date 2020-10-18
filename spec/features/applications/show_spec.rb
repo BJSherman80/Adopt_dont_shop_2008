@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'Applications', type: :feature do
-  it 'create a new application' do
+RSpec.describe 'Application show page', type: :feature do
+  it 'can see application info' do
     user_1 = User.create!(name: "Dr. Evil",
                           address: "56774 FLower Ave.",
                           city: "Smallville",
@@ -22,13 +22,12 @@ RSpec.describe 'Applications', type: :feature do
                                       pets: [pet_1],
                                       status: "pending")
 
-      visit "/pets"
-      click_on 'New Application'
-      expect(current_path).to eq("/applications/user_validation")
-      fill_in :name_of_user, with: "Dr. Evil"
-      click_button 'Submit'
-      save_and_open_page 
-      expect(page).to have_content(user_1.address)
-      expect(page).to have_content("In Progress")
+      visit "applications/#{application.id}"
+
+      expect(page).to have_content(application.name_of_user)
+      expect(page).to have_content(application.address)
+      expect(page).to have_content(application.description)
+      expect(page).to have_content(pet_1.name)
+      expect(page).to have_content(application.status)
     end
   end
