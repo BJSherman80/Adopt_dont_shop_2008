@@ -36,8 +36,8 @@ user_1 = User.create( name: "Austin Powers",
                           zip: 84444,
                           id: 1
                           )
-review = Review.create!(shelter_id: shelter_1.id, user_id: user_1.id, title: "Horrible service", rating: 1, content: "I saw a man slap a kitten", picture: "https://felineengineering.com/wp-content/uploads/2019/07/Adorable-sad-kitten-e1562788887775-974x1024.jpg", name_of_user: "Dr. Evil")
-
+review_1 = Review.create!(shelter_id: shelter_1.id, user_id: user_1.id, title: "Horrible service", rating: 1, content: "I saw a man slap a kitten", picture: "https://felineengineering.com/wp-content/uploads/2019/07/Adorable-sad-kitten-e1562788887775-974x1024.jpg", name_of_user: "Dr. Evil")
+review_2 = Review.create!(shelter_id: shelter_1.id, user_id: user_1.id, title: "Buncha Cuties", rating: 5, content: "There's hairless cats here!", name_of_user: "Dr. Evil")
 shelter_1.pets.create!(name: "Lex Luther", age: 7, sex: "Male", image: "https://www.rd.com/wp-content/uploads/2018/12/50-Funny-Animal-Pictures-That-You-Need-In-Your-Life-25.jpg")
 shelter_1.pets.create!(name: "Bart", age: 4, sex: "Female", image: "https://i.pinimg.com/236x/19/80/34/198034b0276ec4242dc003c13d328e9e--big-eyes-lemurs.jpg")
 shelter_1.pets.create!(name: "Kevin", age: 3, sex: "Female", image: "https://www.insidedogsworld.com/wp-content/uploads/2017/06/German-Shepherd-Standard-Coat-GSC-1000x575-1-1-1-1-1000x575.jpg")

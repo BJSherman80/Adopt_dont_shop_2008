@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :reviews
+  has_many :applications
   validates_presence_of :name, :address, :city, :state, :zip
 
   def average_rating

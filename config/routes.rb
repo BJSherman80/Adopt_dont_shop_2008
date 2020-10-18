@@ -26,7 +26,8 @@ Rails.application.routes.draw do
   get '/users/new', to: 'users#new'
   post '/users', to: 'users#create'
   get '/users/:id', to: 'users#show'
-
+  #applications
+  get '/applications/:id', to: 'applications#show'
 end
 
 # question: should we change the review delete path to delete
