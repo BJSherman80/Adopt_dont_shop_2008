@@ -7,10 +7,14 @@ class User < ApplicationRecord
   end
 
   def highest_rating
-    reviews.order(rating: :desc).first
+    if self.reviews.present?
+      self.reviews.order(rating: :desc).first 
+    end 
   end
 
   def lowest_rating
-    reviews.order(:rating).first
-  end
+    if self.reviews.present?
+      self.reviews.order(:rating).first 
+    end 
+  end 
 end
