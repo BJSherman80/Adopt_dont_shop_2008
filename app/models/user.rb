@@ -5,4 +5,16 @@ class User < ApplicationRecord
   def average_rating
     reviews.average(:rating)
   end
+
+  def highest_rating
+    if self.reviews.present?
+      self.reviews.order(rating: :desc).first 
+    end 
+  end
+
+  def lowest_rating
+    if self.reviews.present?
+      self.reviews.order(:rating).first 
+    end 
+  end 
 end

@@ -7,6 +7,7 @@
 <p><%= @user.zip %></p>
 </div>
 <section class="show">
+  <h2>All Reviews</h2>
   <% @user.reviews.each do |review| %>
   <p>Title: <%= review.title %></p>
   <p>Review out of 5: <%= review.rating %></p>
@@ -15,5 +16,29 @@
 </section>
 <section id="av_user_rating">
   <h2>User's Average Review Rating</h2>
-  <p>Average: <%= @user.average_rating %></p>
+  <% if @user.average_rating %>
+    <p>Average: <%= @user.average_rating %></p>
+  <% else %>
+    <p>No reviews </p>
+  <% end %>
+</section>
+<section id="highest-review">
+  <h2>Best Review</h2>
+  <% if @user.highest_rating %>
+    <p><%= @user.highest_rating.rating %></p>
+    <p><%= @user.highest_rating.title %></p>
+    <p><%= @user.highest_rating.content %></p>
+<%  else  %>
+  <p>No reviews</p>
+<% end %>
+</section>
+<section id="lowest-review">
+    <h2>Worst Review</h2>
+  <% if @user.lowest_rating %>
+    <p><%= @user.lowest_rating.rating %></p>
+    <p><%= @user.lowest_rating.title %></p>
+    <p><%= @user.lowest_rating.content %></p>
+  <% else %>
+    <p>No reviews</p>
+  <% end %>
 </section>
