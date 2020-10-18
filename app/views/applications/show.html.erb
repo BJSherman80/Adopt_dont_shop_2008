@@ -1,0 +1,10 @@
+<div class="show">
+  <h1>Pet Application: <%= @application.id %></h1>
+  <p>Name: <%= @application.name_of_user%></p>
+  <p>Address: <%= @application.address %></p>
+  <p>Description: <%= @application.description %></p>
+  <p>Pets: <% @application.pets.each do |pet| %></p>
+    <p><%= pet.name %></p>
+  <% end %>
+  <p>Status: <%= @application.status %></p>
+</div>
