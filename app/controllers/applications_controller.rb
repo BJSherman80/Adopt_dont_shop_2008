@@ -17,7 +17,7 @@ class ApplicationsController < ApplicationController
     redirect_to "/applications/#{application.id}"
     else 
       flash[:notice] = "User does not exist. Please enter a valid username."
-      return render :new
+      return render :user_validation
     end
   end
 end
