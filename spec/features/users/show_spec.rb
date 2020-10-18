@@ -58,6 +58,7 @@ RSpec.describe 'User show page', type: :feature do
 
   it "see a section for Highlighted Reviews" do
     visit "/users/#{@user_1.id}"
+  
     save_and_open_page
     within("#highest-review") do
       expect(page).to have_content("5")
