@@ -34,11 +34,19 @@ RSpec.describe 'Application show page', type: :feature do
   end
 
   it 'search for a pet to add to the application' do
+    pet2 = @shelter1.pets.create!(name: 'Test',
+                                  age: 12,
+                                  sex: 'male')
     visit "/applications/#{@application.id}"
     expect(page).to have_content('In Progress')
-    fill_in :search, with: 'Vernon'
+    fill_in :search, with: 'Test'
     click_button 'Search'
     expect(current_path).to eq("/applications/#{@application.id}")
-    expect(page).to have_content(@pet1.name)
+    expect(page).to have_content(pet2.name)
+    click_on "Adopt This Pet"
+    expect(current_path).to eq("/applications/#{@application.id}")
+    within(".show") do 
+      expect(page).to have_content(pet2.name)
+    end
   end
 end
