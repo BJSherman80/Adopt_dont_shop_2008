@@ -16,5 +16,15 @@
 <% end %>
 
 <% @search_results.each do |pet| %>
-<%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
+<%= link_to "#{pet.name}", "/pets/#{pet.id}" %><br>
+<%= button_to "Adopt This Pet", "/applications/#{@application.id}", method: :patch, params: {pet: pet} %>
+<% end %>
+<br>
+<br>
+<%= form_tag "/applications/#{@application.id}", :method => 'patch' do %>
+
+  <%= label_tag :description %>
+  <%= text_field_tag :description %>
+
+  <%= submit_tag('Submit Application') %>
 <% end %>

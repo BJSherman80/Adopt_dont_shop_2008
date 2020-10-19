@@ -25,4 +25,11 @@ class ApplicationsController < ApplicationController
       render :user_validation
     end
   end
+
+  def update 
+    app = Application.find(params[:id])
+    pet = Pet.find(params[:pet])
+    app.pets << pet 
+    redirect_to "/applications/#{app.id}"
+  end
 end
