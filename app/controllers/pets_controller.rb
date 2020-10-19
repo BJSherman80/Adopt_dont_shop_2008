@@ -1,7 +1,7 @@
 class PetsController < ApplicationController
 
-  def index
-    @pets = Pet.all
+  def index 
+    @pets = Pet.all 
   end
 
   def show
@@ -38,8 +38,6 @@ class PetsController < ApplicationController
   private
 
   def pet_params
-    params.permit(:name,:age,:sex,:image,:description)
+    params.permit(:name, :age, :sex, :image, :description, :search)
   end
-
-
 end

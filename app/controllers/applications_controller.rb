@@ -1,6 +1,11 @@
 class ApplicationsController < ApplicationController 
   def show
     @application = Application.find(params[:id])
+    @pets = Pet.all 
+    @search_results = []
+    if params[:search] != "" && params[:search] != nil 
+      @search_results = @pets.where("name like ?", "#{params[:search]}")
+    end
   end
 
   def user_validation
