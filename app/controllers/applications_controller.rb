@@ -35,8 +35,13 @@ class ApplicationsController < ApplicationController
 
   def update 
     app = Application.find(params[:id])
-    app.update(description: params[:description],
+    if params[:description].empty?
+      flash[:notice] = 'Please enter a description.'
+      redirect_to "/applications/#{app.id}"
+    else  
+      app.update(description: params[:description],
                 status: 'Pending')
-    redirect_to "/applications/#{app.id}"
+      redirect_to "/applications/#{app.id}"
+    end
   end
 end
