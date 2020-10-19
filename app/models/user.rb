@@ -9,13 +9,13 @@ class User < ApplicationRecord
 
   def highest_rating
     if self.reviews.present?
-      self.reviews.order(rating: :desc).first 
-    end 
+      self.reviews.order(rating: :desc).first
+    end
   end
 
   def lowest_rating
     if self.reviews.present?
-      self.reviews.order(:rating).first 
-    end 
-  end 
+      self.reviews.order(:rating).first
+    end
+  end
 end
