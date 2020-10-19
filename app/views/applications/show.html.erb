@@ -9,22 +9,25 @@
   <p>Status: <%= @application.status %></p>
 </div>
 
-<%= form_tag "/applications/#{@application.id}", :method => "get" do %>
-  <%= label_tag(:search, "Search for a pet: ") %>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag("Search") %>
-<% end %>
-
-<% @search_results.each do |pet| %>
-<%= link_to "#{pet.name}", "/pets/#{pet.id}" %><br>
-<%= button_to "Adopt This Pet", "/applications/#{@application.id}", method: :patch, params: {pet: pet} %>
+<% if @application.status == 'In Progress' %>
+  <%= form_tag "/applications/#{@application.id}", :method => "get" do %>
+    <%= label_tag(:search, "Search for a pet: ") %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag("Search") %>
+  <% end %>
+  <% @search_results.each do |pet| %>
+    <%= link_to "#{pet.name}", "/pets/#{pet.id}" %><br>
+    <%= button_to "Adopt This Pet", "/applications/#{@application.id}/update_pet", method: :patch, params: {pet: pet} %>
+  <% end %>
 <% end %>
 <br>
 <br>
-<%= form_tag "/applications/#{@application.id}", :method => 'patch' do %>
+<% if @application.pets.count > 0 && @application.status == 'In Progress' %>
+  <%= form_tag "/applications/#{@application.id}", method: :patch do %>
 
-  <%= label_tag :description %>
-  <%= text_field_tag :description %>
+    <%= label_tag :description %>
+    <%= text_field_tag :description %>
 
-  <%= submit_tag('Submit Application') %>
+    <%= submit_tag 'Submit Application' %>
+  <% end %>
 <% end %>

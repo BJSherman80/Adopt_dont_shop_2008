@@ -49,4 +49,24 @@ RSpec.describe 'Application show page', type: :feature do
       expect(page).to have_content(pet2.name)
     end
   end
+
+  it 'can submit an application' do 
+    pet2 = @shelter1.pets.create!(name: 'Bob',
+                                  age: 12,
+                                  sex: 'male')
+    visit "/applications/#{@application.id}"
+    expect(page).to_not have_content("Submit")
+    fill_in :search, with: 'Bob'
+    click_button 'Search'
+    expect(current_path).to eq("/applications/#{@application.id}")
+    expect(page).to have_content(pet2.name)
+    click_on 'Adopt This Pet'
+    expect(current_path).to eq("/applications/#{@application.id}")
+    fill_in :description, with: "I'll give you on billlllion dollars"
+    click_on 'Submit Application'
+    save_and_open_page
+    expect(current_path).to eq("/applications/#{@application.id}")
+    expect(page).to have_content('Pending')
+    expect(page).to_not have_content('Search for a pet:')
+  end
 end
