@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get '/applications/user_validation', to: 'applications#user_validation'
   post '/applications', to: 'applications#create'
   get '/applications/:id', to: 'applications#show'
+  patch '/applications/:id', to: 'applications#update'
 end
 
 # question: should we change the review delete path to delete

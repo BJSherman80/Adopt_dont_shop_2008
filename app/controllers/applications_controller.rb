@@ -3,8 +3,8 @@ class ApplicationsController < ApplicationController
     @application = Application.find(params[:id])
     @pets = Pet.all
     @search_results = []
-    if params[:search] != '' && !params[:search].nil?
-      @search_results = @pets.where('name like ?', "#{params[:search]}")
+    if params[:search] != '' && !search_params.nil?
+      @search_results = @pets.where('name like ?', "#{search_params}")
     end
   end
 
@@ -25,4 +25,17 @@ class ApplicationsController < ApplicationController
       render :user_validation
     end
   end
+
+  def update 
+    app = Application.find(params[:id])
+    pet = Pet.find(params[:pet])
+    app.pets << pet 
+    redirect_to "/applications/#{app.id}"
+  end
+
+  private 
+
+  def search_params 
+    params.permit(:search)
+  end 
 end
