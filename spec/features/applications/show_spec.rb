@@ -19,8 +19,8 @@ RSpec.describe 'Application show page', type: :feature do
     @application = @user1.applications.create!(name_of_user: 'Dr. Evil',
                                       address: '56774 FLower Ave.',
                                       description: 'I love this hairless cat',
-                                      pets: [@pet1],
                                       status: 'In Progress')
+    @application.pets << @pet1
   end
 
   it 'can see application info' do
@@ -64,9 +64,17 @@ RSpec.describe 'Application show page', type: :feature do
     expect(current_path).to eq("/applications/#{@application.id}")
     fill_in :description, with: "I'll give you on billlllion dollars"
     click_on 'Submit Application'
-    save_and_open_page
     expect(current_path).to eq("/applications/#{@application.id}")
     expect(page).to have_content('Pending')
     expect(page).to_not have_content('Search for a pet:')
+  end
+
+  it 'will not show submit if no pets have been added' do 
+    application2 = @user1.applications.create!(name_of_user: 'Dr. Evil',
+                                      address: '56774 FLower Ave.',
+                                      description: 'I love this hairless cat',
+                                      status: 'In Progress')
+    visit "/applications/#{@application.id}"
+    expect(page).to_not have_content('Submit Application')
   end
 end
