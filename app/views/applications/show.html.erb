@@ -1,14 +1,16 @@
 <div class="show">
-  <h1>Pet Application: <%= @application.id %></h1>
+  <h2>Pet Application: <%= @application.id %></h2>
   <p>Name: <%= @application.name_of_user%></p>
   <p>Address: <%= @application.address %></p>
   <p>Description: <%= @application.description %></p>
   <p>Pets: <% @application.pets.each do |pet| %></p>
     <p><%= pet.name %></p>
+    <img src="<%= pet.image %>" alt="<%= pet.name %>" width="200">
   <% end %>
   <p>Status: <%= @application.status %></p>
 </div>
-
+<br>
+<br>
 <% if @application.status == 'In Progress' %>
   <%= form_tag "/applications/#{@application.id}", :method => "get" do %>
     <%= label_tag(:search, "Search for a pet: ") %>
