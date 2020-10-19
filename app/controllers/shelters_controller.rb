@@ -1,5 +1,4 @@
 class SheltersController < ApplicationController
-
   def index
     @shelters = Shelter.all
   end
@@ -8,17 +7,15 @@ class SheltersController < ApplicationController
     @shelter = Shelter.find(params[:id])
   end
 
-  def new
-  
-  end
+  def new; end
 
   def create
     shelter = Shelter.new(shelter_params)
     if shelter.save
-      flash[:notice] = "Shelter successfully update!"
-      redirect_to "/shelters"
+      flash[:notice] = 'Shelter successfully update!'
+      redirect_to '/shelters'
     else
-      flash[:error] = "Please fill out all fields to update review."
+      flash[:error] = 'Please fill out all fields to update review.'
       render :new
     end
   end
@@ -29,8 +26,8 @@ class SheltersController < ApplicationController
 
   def update
     shelter = Shelter.find(params[:id])
-      shelter.update(shelter_params)
-      shelter.save
+    shelter.update(shelter_params)
+    shelter.save
     redirect_to "/shelters/#{shelter.id}"
   end
 
@@ -44,8 +41,6 @@ class SheltersController < ApplicationController
   private
 
   def shelter_params
-    params.permit(:name,:address,:city,:state,:zip)
+    params.permit(:name, :address, :city, :state, :zip)
   end
-
-
 end

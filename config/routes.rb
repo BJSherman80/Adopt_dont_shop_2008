@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'welcome#welcome'
-  #shelters
+  # shelters
   get '/shelters', to: 'shelters#index'
   get '/shelters/new', to: 'shelters#new'
   get '/shelters/:id', to: 'shelters#show'
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/shelters/:id/review/:review_id/edit', to: 'reviews#edit'
   patch '/shelters/:id/review/:review_id', to: 'reviews#update'
   get '/shelters/:id/review/:review_id/delete', to: 'reviews#destroy'
-  #pets
+  # pets
   get '/pets', to: 'pets#index'
   get '/shelters/:id/pets', to: 'shelterpets#index'
   get '/pets/:id', to: 'pets#show'
@@ -22,11 +22,11 @@ Rails.application.routes.draw do
   patch 'pets/:id', to: 'pets#update'
   get '/pets/:id/edit', to: 'pets#edit'
   get '/pets/:id/delete', to: 'pets#destroy'
-  #users
+  # users
   get '/users/new', to: 'users#new'
   post '/users', to: 'users#create'
   get '/users/:id', to: 'users#show'
-  #applications
+  # applications
   get '/applications/user_validation', to: 'applications#user_validation'
   post '/applications', to: 'applications#create'
   get '/applications/:id', to: 'applications#show'

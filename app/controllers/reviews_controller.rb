@@ -9,14 +9,14 @@ class ReviewsController < ApplicationController
       review = Review.new(review_params)
       review.user_id = User.find_by(name: params[:name_of_user]).id
     else
-      flash[:notice] = "User does not exist. Please enter a valid username."
+      flash[:notice] = 'User does not exist. Please enter a valid username.'
       return render :new
     end
     if review.save
       redirect_to "/shelters/#{@shelter.id}"
     else
-      flash.now[:notice] = "All fields must be filled in to submit review."
-      return render :new
+      flash.now[:notice] = 'All fields must be filled in to submit review.'
+      render :new
     end
   end
 
@@ -28,24 +28,22 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:review_id])
     @review.update(review_params)
     if @review.save
-      flash[:notice] = "Review successfully update!"
+      flash[:notice] = 'Review successfully update!'
       redirect_to "/shelters/#{@review.shelter_id}"
     else
-      flash[:error] = "Please fill out all fields to update review."
+      flash[:error] = 'Please fill out all fields to update review.'
       render :edit
     end
   end
 
   def destroy
     Review.destroy(params[:review_id])
-    redirect_to "/shelters/#{(params[:id])}"
+    redirect_to "/shelters/#{params[:id]}"
   end
-
 
   private
 
   def review_params
     params.permit(:id, :title, :rating, :content, :picture, :name_of_user, :shelter_id, :user_id)
   end
-
 end

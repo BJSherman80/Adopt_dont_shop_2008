@@ -1,7 +1,6 @@
 class PetsController < ApplicationController
-
-  def index 
-    @pets = Pet.all 
+  def index
+    @pets = Pet.all
   end
 
   def show
@@ -19,14 +18,14 @@ class PetsController < ApplicationController
   def create
     @shelter = Shelter.find(params[:id])
     pet = @shelter.pets.new(pet_params)
-     pet.save
+    pet.save
     redirect_to "/shelters/#{@shelter.id}/pets"
   end
 
   def update
     pet = Pet.find(params[:id])
-      pet.update(pet_params)
-      pet.save
+    pet.update(pet_params)
+    pet.save
     redirect_to "/pets/#{pet.id}"
   end
 
