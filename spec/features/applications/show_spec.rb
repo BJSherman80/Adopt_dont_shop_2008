@@ -77,4 +77,22 @@ RSpec.describe 'Application show page', type: :feature do
     visit "/applications/#{@application.id}"
     expect(page).to_not have_content('Submit Application')
   end
+
+  it "will show a flash message if description isn't filled out" do 
+    pet2 = @shelter1.pets.create!(name: 'Bob',
+                                  age: 12,
+                                  sex: 'male')
+    visit "/applications/#{@application.id}"
+    expect(page).to_not have_content("Submit")
+    fill_in :search, with: 'Bob'
+    click_button 'Search'
+    expect(current_path).to eq("/applications/#{@application.id}")
+    expect(page).to have_content(pet2.name)
+    click_on 'Adopt This Pet'
+    expect(current_path).to eq("/applications/#{@application.id}")
+    fill_in :description, with: ""
+    click_on 'Submit Application'
+    expect(current_path).to eq("/applications/#{@application.id}")
+    expect(page).to have_content('Please enter a description.')
+  end
 end
