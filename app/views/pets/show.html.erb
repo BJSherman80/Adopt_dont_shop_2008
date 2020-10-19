@@ -87,5 +87,5 @@
 <p>Adoption Status: <%= @pet.status %></p>
 <p>Description: <%= @pet.description %></p>
 <h5><a href="/pets/<%= @pet.id %>/edit">Update Pet</a></h5>
-<h5><a href="/pets/<%= @pet.id %>/delete">Delete Pet</a></h5><br>
+<h5> <%= link_to "Delete Pet", "/pets/#{@pet.id}", method: :delete %></h5>
 </div>
