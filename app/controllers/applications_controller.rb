@@ -3,8 +3,8 @@ class ApplicationsController < ApplicationController
     @application = Application.find(params[:id])
     @pets = Pet.all
     @search_results = []
-    if params[:search] != '' && !search_params.nil?
-      @search_results = @pets.where('name like ?', "#{search_params}")
+    if params[:search] != '' && !params[:search].nil?
+      @search_results = @pets.where('name like ?', "#{params[:search]}")
     end
   end
 
@@ -32,10 +32,4 @@ class ApplicationsController < ApplicationController
     app.pets << pet 
     redirect_to "/applications/#{app.id}"
   end
-
-  private 
-
-  def search_params 
-    params.permit(:search)
-  end 
 end
