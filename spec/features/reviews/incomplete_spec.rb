@@ -27,8 +27,7 @@ RSpec.describe 'Flash notice when form is incomplete', type: :feature do
     fill_in :title, with: 'Extremely Horrible Crap Service'
     fill_in :rating, with: 0
     fill_in :content, with: 'The goldfish were fighting'
-    fill_in :name_of_user, with: 'Cruella Deville'
-    fill_in :user_id, with: ''
+    fill_in :name_of_user, with: ''
     click_on 'Update Review'
 
     expect(page).to have_content('Please fill out all fields to update review.')
