@@ -30,16 +30,37 @@ RSpec.describe 'Application show page', type: :feature do
     expect(current_path).to eq("/admin/applications/#{@application.id}")
     within("#pet-#{@pet1.id}") do
       expect(page).to have_content('Approved')
-    end 
+    end
   end
 
-  it 'can reject an application' do 
+  it 'can reject an application' do
     visit "admin/applications/#{@application.id}"
     expect(page).to have_content(@pet1.name)
     click_on 'Reject'
     expect(current_path).to eq("/admin/applications/#{@application.id}")
     within("#pet-#{@pet1.id}") do
       expect(page).to have_content('Rejected')
-    end 
+    end
   end
+
+  it 'can approve all pets and app status changes to approved' do
+    pet2 = @shelter1.pets.create!(name: 'Billy',
+                                    age: 18,
+                                    sex: 'male',
+                                    image: 'vernon.png')
+    @application.pets << pet2
+    visit "admin/applications/#{@application.id}"
+    expect(page).to have_content(@pet1.name)
+    expect(page).to have_content(pet2.name)
+    within("#pet-#{@pet1.id}") do
+      click_on 'Approve'
+    end
+    within("#pet-#{pet2.id}") do
+      click_on 'Approve'
+    end
+    within("#application-status") do
+      expect(page).to have_content("Approved")
+    end
+  end
+
 end

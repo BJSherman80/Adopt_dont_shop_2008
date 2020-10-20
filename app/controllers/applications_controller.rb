@@ -29,19 +29,20 @@ class ApplicationsController < ApplicationController
   def update_pet
     app = Application.find(params[:id])
     pet = Pet.find(params[:pet])
-    app.pets << pet 
+    app.pets << pet
     redirect_to "/applications/#{app.id}"
   end
 
-  def update 
+  def update
     app = Application.find(params[:id])
     if params[:description].empty?
       flash[:notice] = 'Please enter a description.'
       redirect_to "/applications/#{app.id}"
-    else  
+    else
       app.update(description: params[:description],
                 status: 'Pending')
       redirect_to "/applications/#{app.id}"
     end
   end
+  
 end

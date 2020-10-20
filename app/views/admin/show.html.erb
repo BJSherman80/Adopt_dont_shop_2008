@@ -1,5 +1,8 @@
 <h2>Admin Approval Page</h2>
 <p>Application: <%= @application.id %></p>
+<section id="application-status">
+<p>Application Status: <%= @application.status %> </p>
+</section>
 <% @application.pets.each do |pet| %>
   <section id="pet-<%= pet.id %>">
     <%= pet.name %><br>

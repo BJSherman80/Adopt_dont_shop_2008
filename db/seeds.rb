@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Pet.destroy_all
+Review.destroy_all
+User.destroy_all
 Shelter.destroy_all
 
 shelter_1 = Shelter.create(name: "Brett's Pet Palace", address: '456 Sesame Ave', city: 'Denver', state: 'CO', zip: 80222)
@@ -15,8 +17,7 @@ shelter_3 = Shelter.create(name: 'Fuzzy Friends', address: '444 44th Ave.', city
 
 user_1 = User.create(name: 'Austin Powers', address: '4555 Shag Ave', city: 'Denver', state: 'CO', zip: 84444, id: 1)
 
-review_1 = Review.create!(shelter_id: shelter_1.id, user_id: user_1.id, title: 'Horrible service', rating: 1, content: 'I saw a man slap a kitten', picture: 'https://felineengineering.com/wp-content/uploads/2019/07/Adorable-sad-kitten-e1562788887775-974x1024.jpg', name_of_user: 'Dr. Evil')
-review_2 = Review.create!(shelter_id: shelter_1.id, user_id: user_1.id, title: 'Buncha Cuties', rating: 5, content: "There's hairless cats here!', name_of_user: 'Dr. Evil")
+review_1 = user_1.reviews.create!(shelter_id: shelter_1.id, title: 'Horrible service', rating: 1, content: 'I saw a man slap a kitten', picture: 'https://felineengineering.com/wp-content/uploads/2019/07/Adorable-sad-kitten-e1562788887775-974x1024.jpg', name_of_user: 'Dr. Evil')
 
 shelter_1.pets.create!(name: 'Lex Luther', age: 7, sex: 'Male', image: 'https://www.rd.com/wp-content/uploads/2018/12/50-Funny-Animal-Pictures-That-You-Need-In-Your-Life-25.jpg')
 shelter_1.pets.create!(name: 'Bart', age: 4, sex: 'Female', image: 'https://i.pinimg.com/236x/19/80/34/198034b0276ec4242dc003c13d328e9e--big-eyes-lemurs.jpg')
