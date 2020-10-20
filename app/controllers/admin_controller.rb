@@ -7,7 +7,13 @@ class AdminController < ActionController::Base
     application = Application.find(params[:id])
     pet = application.pets.where(id: params[:pet]).first
     pet.update(status: 'Approved')
-    pet.save
+    redirect_to "/admin/applications/#{application.id}"
+  end
+
+  def reject_pet
+    application = Application.find(params[:id])
+    pet = application.pets.where(id: params[:pet]).first
+    pet.update(status: 'Rejected')
     redirect_to "/admin/applications/#{application.id}"
   end
 end
