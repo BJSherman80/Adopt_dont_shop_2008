@@ -32,6 +32,9 @@ Rails.application.routes.draw do
   get '/applications/:id', to: 'applications#show'
   patch '/applications/:id', to: 'applications#update'
   patch '/applications/:id/update_pet', to: 'applications#update_pet'
+  # admin
+  get '/admin/applications/:id', to: 'admin#show'
+  patch 'admin/applications/:id/approve', to: 'admin#approve_pet'
 end
 
 # question: should we change the review delete path to delete
