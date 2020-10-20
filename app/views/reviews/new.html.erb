@@ -1,24 +1,6 @@
-<h2>Enter Your Reviw:</h2>
-<div class="show">
-<%= form_tag "/shelters/#{@shelter.id}/review" do %>
-<%= hidden_field_tag :shelter_id, @shelter.id %>
-
-<%= label_tag :title %>
-<%= text_field_tag :title %><br>
-
-<%= label_tag :rating %>
-<%= text_field_tag :rating %><br>
-
-<%= label_tag :content  %>
-<%= text_field_tag :content %><br>
-
-<%= label_tag :picture %>
-<%= text_field_tag :picture %><br>
-
-<%= label_tag :username %>
-<%= text_field_tag :name_of_user %><br>
-
-
-<%= submit_tag "Create Review" %>
-<% end %>
-</div>
+<%= render partial: "new_form", locals: {
+                                  method: :post,
+                                  path: "/shelters/#{@shelter.id}/review",
+                                  submit_text: "Create Review",
+                                  hidden: true,
+                                    } %>

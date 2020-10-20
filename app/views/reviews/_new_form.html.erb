@@ -1,0 +1,24 @@
+<h2>Enter Your Review:</h2>
+<div class="show">
+<%= form_tag path, method: method do %>
+<% if hidden %>
+<%=hidden_field_tag :shelter_id, @shelter.id %>
+<% end %>
+<%= label_tag :title %>
+<%= text_field_tag :title %><br>
+
+<%= label_tag :rating %>
+<%= text_field_tag :rating %><br>
+
+<%= label_tag :content  %>
+<%= text_field_tag :content %><br>
+
+<%= label_tag :picture %>
+<%= text_field_tag :picture %><br>
+
+<%= label_tag :username %>
+<%= text_field_tag :name_of_user %><br>
+
+<%= submit_tag submit_text %>
+<% end %>
+</div>
