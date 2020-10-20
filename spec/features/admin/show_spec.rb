@@ -23,13 +23,23 @@ RSpec.describe 'Application show page', type: :feature do
     @application.pets << @pet1
   end
 
-  it 'can see application info' do
+  it 'can approve and application' do
     visit "admin/applications/#{@application.id}"
     expect(page).to have_content(@pet1.name)
     click_on 'Approve'
     expect(current_path).to eq("/admin/applications/#{@application.id}")
     within("#pet-#{@pet1.id}") do
       expect(page).to have_content('Approved')
+    end 
+  end
+
+  it 'can reject an application' do 
+    visit "admin/applications/#{@application.id}"
+    expect(page).to have_content(@pet1.name)
+    click_on 'Reject'
+    expect(current_path).to eq("/admin/applications/#{@application.id}")
+    within("#pet-#{@pet1.id}") do
+      expect(page).to have_content('Rejected')
     end 
   end
 end
