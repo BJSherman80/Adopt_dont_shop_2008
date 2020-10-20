@@ -19,20 +19,6 @@ RSpec.describe 'Flash notice when form is incomplete', type: :feature do
                             name_of_user: 'Dr. Evil')
   end
 
-  it 'can provide a flash notice' do
-    visit "/shelters/#{@shelter1.id}"
-    within("#review-#{@review.id}") do
-      click_on 'Edit Review'
-    end
-    fill_in :title, with: 'Extremely Horrible Crap Service'
-    fill_in :rating, with: 0
-    fill_in :content, with: 'The goldfish were fighting'
-    fill_in :name_of_user, with: ''
-    click_on 'Update Review'
-
-    expect(page).to have_content('Please fill out all fields to update review.')
-  end
-
   it 'will display a flash message if the user does not exist' do
     visit "/shelters/#{@shelter1.id}"
 
@@ -46,5 +32,34 @@ RSpec.describe 'Flash notice when form is incomplete', type: :feature do
     click_on 'Create Review'
 
     expect(page).to have_content('User does not exist. Please enter a valid username.')
+  end
+
+  it 'can provide a flash notice when the user creates a review' do
+    visit "/shelters/#{@shelter1.id}"
+
+    click_on 'New Review'
+
+    fill_in :title, with: ''
+    fill_in :rating, with: 1
+    fill_in :content, with: 'The goldfish were fighting'
+    fill_in :name_of_user, with: 'Austin Powers'
+
+    click_on 'Create Review'
+    save_and_open_page
+    expect(page).to have_content('All fields must be filled in to submit review.')
+  end
+
+  it 'can provide a flash notice when the user edits a review' do
+    visit "/shelters/#{@shelter1.id}"
+    within("#review-#{@review.id}") do
+      click_on 'Edit Review'
+    end
+    fill_in :title, with: 'Extremely Horrible Crap Service'
+    fill_in :rating, with: 0
+    fill_in :content, with: 'The goldfish were fighting'
+    fill_in :name_of_user, with: ''
+    click_on 'Update Review'
+
+    expect(page).to have_content('Please fill out all fields to update review.')
   end
 end
