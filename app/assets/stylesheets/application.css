@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+ @import url('https://fonts.googleapis.com/css?family=Corben:700');
+
  .header_1 {
   color: #fff;
   padding: 0.1em;
@@ -58,7 +61,6 @@
   color: white;
   font-weight: bolder;
 }
-@import url('https://fonts.googleapis.com/css?family=Corben:700');
 
 h1 {
 	font-family: 'Corben', cursive;
@@ -70,7 +72,7 @@ h1 {
 
 h2 {
   text-align: center;
-	font-family: 'Corben', cursive;
+	font-family: 'Satisfy', cursive;
 	font-size: 2rem;
 	color: grey;
 	letter-spacing: 0.1rem;
