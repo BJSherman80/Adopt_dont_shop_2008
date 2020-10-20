@@ -4,8 +4,8 @@ class ApplicationsController < ApplicationController
     @pets = Pet.all
     @search_results = []
     if params[:search] != '' && !params[:search].nil?
-      @search_results = @pets.where('name like ?', "#{params[:search]}")
-    end
+      @search_results = @pets.where('lower(name) like ?', "%#{params[:search]}%".downcase)
+    end # this is how you do partial search params ^
   end
 
   def user_validation

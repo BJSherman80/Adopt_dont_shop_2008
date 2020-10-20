@@ -95,4 +95,20 @@ RSpec.describe 'Application show page', type: :feature do
     expect(current_path).to eq("/applications/#{@application.id}")
     expect(page).to have_content('Please enter a description.')
   end
+
+  it 'can search using a partial input' do 
+    pet2 = @shelter1.pets.create!(name: 'Bob',
+                                  age: 12,
+                                  sex: 'male')
+    pet3 = @shelter1.pets.create!(name: 'Betsy',
+                                  age: 2,
+                                  sex: 'male')
+    visit "/applications/#{@application.id}"
+    expect(page).to_not have_content("Submit")
+    fill_in :search, with: 'b'
+    click_button 'Search'
+    expect(current_path).to eq("/applications/#{@application.id}")
+    expect(page).to have_content(pet2.name)
+    expect(page).to have_content(pet3.name)
+  end
 end
