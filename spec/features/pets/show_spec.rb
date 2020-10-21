@@ -20,4 +20,21 @@ RSpec.describe 'Pets show page', type: :feature do
     expect(page).to have_content(pet1.status)
     expect(page).to have_content(pet1.description)
   end
+
+  it 'can display pet info ' do
+    shelter1 = Shelter.create(name: 'Sherms Spikey Friends',
+                              address: '1489 Balake Ave.',
+                              city: 'Denver',
+                              state: 'CO',
+                              zip: '80201')
+    pet1 = shelter1.pets.create!(name: 'Vernon',
+                                age: 18,
+                                sex: 'male',
+                                image: 'vernon.png',
+                                description: 'Lovable little dude.',
+                                status: 'Pending')
+
+    visit "/pets/#{pet1.id}"
+    expect(page).to_not have_content("Delete")
+  end
 end
