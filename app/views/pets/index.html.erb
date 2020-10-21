@@ -89,7 +89,7 @@
     <p>Located at: <a href="/shelters/<%= pet.shelter.id %>"><%= pet.shelter.name %></a></p>
     <p> Age: <%= pet.age%></p>
     <p>Sex: <%= pet.sex%></p>
-		<h5><a href="/pets/<%= pet.id %>/edit">Edit</a></h5>
+    <h5><a href="/pets/<%= pet.id %>/edit">Edit</a></h5>
 		<h5> <%= link_to "Delete", "/pets/#{pet.id}", method: :delete %></h5>
   </div>
 <% end %>
