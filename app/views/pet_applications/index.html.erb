@@ -1,5 +1,10 @@
 <h2>Applications for <%= @pet.name %></h2>
-<% @pet.pet_applications.each do |application| %>
-<%= link_to "#{application.application.name_of_user}", "/applications/#{application.application.id}" %><br>
-<%= application.application.description %>
+
+<% if @pet.pet_applications.any? %>
+  <% @pet.pet_applications.each do |application| %>
+    <%= link_to "#{application.application.name_of_user}", "/applications/#{application.application.id}" %><br>
+    <%= application.application.description %>
+  <% end %>
+<% else %>
+  <h2><%= "There are no applications for this pet." %></h2>
 <% end %>
