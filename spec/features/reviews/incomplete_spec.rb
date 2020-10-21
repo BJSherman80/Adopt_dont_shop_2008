@@ -45,7 +45,7 @@ RSpec.describe 'Flash notice when form is incomplete', type: :feature do
     fill_in :name_of_user, with: 'Austin Powers'
 
     click_on 'Create Review'
-    save_and_open_page
+
     expect(page).to have_content('All fields must be filled in to submit review.')
   end
 
