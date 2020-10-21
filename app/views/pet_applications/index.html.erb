@@ -1,0 +1,5 @@
+<h2>Applications for <%= @pet.name %></h2>
+<% @pet.pet_applications.each do |application| %>
+<%= link_to "#{application.application.name_of_user}", "/applications/#{application.application.id}" %><br>
+<%= application.application.description %>
+<% end %>
