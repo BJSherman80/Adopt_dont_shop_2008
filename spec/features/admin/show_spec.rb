@@ -28,9 +28,7 @@ RSpec.describe 'Application show page', type: :feature do
     expect(page).to have_content(@pet1.name)
     click_on 'Approve'
     expect(current_path).to eq("/admin/applications/#{@application.id}")
-    within("#pet-#{@pet1.id}") do
-      expect(page).to have_content('Approved')
-    end
+      expect(page).to have_content("#{@pet1.name} hase been approved!")
   end
 
   it 'can reject an application' do
@@ -38,9 +36,7 @@ RSpec.describe 'Application show page', type: :feature do
     expect(page).to have_content(@pet1.name)
     click_on 'Reject'
     expect(current_path).to eq("/admin/applications/#{@application.id}")
-    within("#pet-#{@pet1.id}") do
-      expect(page).to have_content('Rejected')
-    end
+      expect(page).to have_content("#{@pet1.name} hase been Rejected.")
   end
 
   it 'can approve all pets and app status changes to approved' do

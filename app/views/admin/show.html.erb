@@ -2,13 +2,13 @@
 <p>Application: <%= @application.id %></p>
 <section id="application-status">
 <p>Application Status: <%= @application.status %> </p>
+<%= flash[:notice] %>
 </section>
 <% @application.pets.each do |pet| %>
   <section id="pet-<%= pet.id %>">
     <%= pet.name %><br>
     <img src="<%= pet.image %>" alt="<%= pet.name %>" width="200"><br>
-    <%= pet.status %>
-    <% if pet.status == 'Adoptable' %>
+    <% if pet.status == 'Adoptable' && (@application.status == 'Pending' || @application.status == 'In Progress') %>
       <%= button_to 'Approve', "/admin/applications/#{@application.id}/approve", method: :patch, params: {pet: pet} %>
       <%= button_to 'Reject', "/admin/applications/#{@application.id}/reject", method: :patch, params: {pet: pet} %>
     <% end %>
