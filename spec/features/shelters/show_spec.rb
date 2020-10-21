@@ -77,4 +77,22 @@ RSpec.describe 'Shelters show page', type: :feature do
     expect(page).to have_content("Average Shelter Review Rating: 1")
     expect(page).to have_content("Applications on file for pets: 1")
   end
+
+  it 'can see pet count, average shelter rating, and count of pets' do
+
+    shelter1 = Shelter.create(name: "Brett's Pet Palace",
+                                address: '456 Sesame Ave',
+                                city: 'Denver',
+                                state: 'CO',
+                                zip: 80222)
+    pet1 = shelter1.pets.create!(name: 'Vernon',
+                                age: 18,
+                                sex: 'male',
+                                image: 'vernon.png',
+                                status: "Pending")
+
+
+    visit "/shelters/#{shelter1.id}"
+    expect(page).to_not have_content("Delete")
+  end
 end
