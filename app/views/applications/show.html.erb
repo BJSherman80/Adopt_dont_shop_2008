@@ -7,9 +7,6 @@
   <p>Pets: <% @application.pets.each do |pet| %></p>
     <p><%= pet.name %></p>
     <img src="<%= pet.image %>" alt="<%= pet.name %>" width="200">
-    <% if @application.status == 'Pending'  %>
-      <p>This Pet Has Been Approved For Adoption</p>
-    <% end %>
   <% end %>
   <p>Status: <%= @application.status %></p>
 </div>
