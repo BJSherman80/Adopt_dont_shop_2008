@@ -88,4 +88,5 @@
 <p>Description: <%= @pet.description %></p>
 <h5><a href="/pets/<%= @pet.id %>/edit">Update Pet</a></h5>
 <h5> <%= link_to "Delete Pet", "/pets/#{@pet.id}", method: :delete %></h5>
+<h5> <%= link_to "Pet's Applications", "/pets/#{@pet.id}/applications", method: :get %></h5>
 </div>
