@@ -69,7 +69,7 @@ RSpec.describe 'Application show page', type: :feature do
                                     sex: 'male',
                                     image: 'vernon.png')
     @application.pets << pet2
-    
+
     visit "admin/applications/#{@application.id}"
 
     expect(page).to have_content(@pet1.name)
@@ -82,6 +82,19 @@ RSpec.describe 'Application show page', type: :feature do
     end
     within("#application-status") do
       expect(page).to have_content("Rejected")
+    end
+  end
+
+  it "can see message this pet has been approved for adoption" do
+
+    visit "admin/applications/#{@application.id}"
+
+    expect(page).to have_content(@pet1.name)
+    within("#pet-#{@pet1.id}") do
+      click_on 'Approve'
+    end
+    within("#pet-#{@pet1.id}") do
+      expect(page).to have_content("This Pet Has Been Approved For Adoption")
     end
   end
 
