@@ -12,5 +12,8 @@
       <%= button_to 'Approve', "/admin/applications/#{@application.id}/approve", method: :patch, params: {pet: pet} %>
       <%= button_to 'Reject', "/admin/applications/#{@application.id}/reject", method: :patch, params: {pet: pet} %>
     <% end %>
+    <% if @application.status == 'Approved' || @application.status == 'Pending' %>
+      <p>This Pet Has Been Approved For Adoption</p>
+    <% end %>
     </section>
   <% end %>
