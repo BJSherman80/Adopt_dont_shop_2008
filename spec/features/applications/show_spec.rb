@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Application show page', type: :feature do
+RSpec.describe 'On an Applications show page the user', type: :feature do
   before(:each) do
     @user1 = User.create!(name: 'Dr. Evil',
                           address: '56774 FLower Ave.',
@@ -69,7 +69,7 @@ RSpec.describe 'Application show page', type: :feature do
     expect(page).to_not have_content('Search for a pet:')
   end
 
-  it 'will not show submit if no pets have been added' do 
+  it 'will not see submit if no pets have been added' do 
     application2 = @user1.applications.create!(name_of_user: 'Dr. Evil',
                                       address: '56774 FLower Ave.',
                                       description: 'I love this hairless cat',
